@@ -1,0 +1,23 @@
+#include "Appliance.h"
+#include <iostream>
+using namespace std;
+
+// Constructor to initialize appliance details
+Appliance::Appliance(string n, double p, double h) {
+    name = n;
+    powerRating = p;
+    hoursPerDay = h;
+}
+
+// Display appliance details
+void Appliance::display() const {
+    cout << "Appliance Name: " << name << endl;
+    cout << "Power Rating (W): " << powerRating << endl;
+    cout << "Hours Used Per Day: " << hoursPerDay << endl;
+    cout << "Daily Energy (kWh): " << calculateDailyEnergy() << endl;
+}
+
+// Calculate daily energy consumption
+double Appliance::calculateDailyEnergy() const {
+    return (powerRating * hoursPerDay) / 1000.0; // Convert W·h to kWh
+}
