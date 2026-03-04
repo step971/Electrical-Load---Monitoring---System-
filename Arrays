@@ -1,0 +1,47 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    const int MAX = 5;  // Maximum number of appliances
+
+    string applianceName[MAX];
+    double power[MAX];
+    double hours[MAX];
+    double energy[MAX];
+
+    int count;
+
+    cout << "How many appliances do you want to enter? ";
+    cin >> count;
+
+    // Loop to collect data
+    for (int i = 0; i < count; i++) {
+
+        cout << "\nAppliance " << i + 1 << endl;
+
+        cout << "Enter appliance name: ";
+        cin >> applianceName[i];
+
+        cout << "Enter power rating (Watts): ";
+        cin >> power[i];
+
+        cout << "Enter hours used per day: ";
+        cin >> hours[i];
+
+        // Energy calculation
+        energy[i] = (power[i] * hours[i]) / 1000;
+    }
+
+    // Display results
+    cout << "\n===== ENERGY REPORT =====\n";
+
+    for (int i = 0; i < count; i++) {
+        cout << applianceName[i] 
+             << " consumes " 
+             << energy[i] 
+             << " kWh per day\n";
+    }
+
+    return 0;
+}
