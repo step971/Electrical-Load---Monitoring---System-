@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+// Function to calculate energy in kilowatt-hour
+double calculateEnergy(double power, double hours)
+{
+    // Energy formula
+    return (power * hours) / 1000;
+}
+
+int main()
+{
+    double power, hours, result;
+
+    cout << "Enter power rating (Watts): ";
+    cin >> power;
+
+    cout << "Enter hours used: ";
+    cin >> hours;
+
+    // Calling the function
+    result = calculateEnergy(power, hours);
+
+    cout << "Energy Consumed: " << result << " kWh" << endl;
+
+    return 0;
+}
