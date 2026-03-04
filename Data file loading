@@ -1,0 +1,14 @@
+void saveData(const vector<Appliance>& appliances) {
+    ofstream outFile("data.txt");
+    if (!outFile) {
+        cout << "Error opening file for writing.\n";
+        return;
+    }
+    
+    for (const auto& app : appliances) {
+        outFile << app.name << " " << app.power << " " << app.hoursUsed << "\n";
+    }
+    
+    outFile.close();
+    cout << "Data saved successfully.\n";
+}
