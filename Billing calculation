@@ -1,0 +1,18 @@
+double calculateBill(double totalEnergy) {
+    double bill = 0;
+
+    // First 50 units
+    if (totalEnergy <= 50) {
+        bill = totalEnergy * 0.50;
+    }
+    // Next 100 units
+    else if (totalEnergy <= 150) {
+        bill = (50 * 0.50) + ((totalEnergy - 50) * 0.75);
+    }
+    // Above 150 units
+    else {
+        bill = (50 * 0.50) + (100 * 0.75) + ((totalEnergy - 150) * 1.20);
+    }
+
+    return bill;
+}
