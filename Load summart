@@ -1,0 +1,1 @@
+cout << "\nTotal Connected Load: " << totalLoad << " Watts";
