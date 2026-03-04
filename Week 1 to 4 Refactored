@@ -1,0 +1,100 @@
+#include <iostream>
+#include <vector>
+#include <fstream>
+#include <iomanip>
+
+struct Appliance {
+    std::string name;
+    double power;   // in Watts
+    double hours;   // daily usage
+};
+
+std::vector<Appliance> appliances;
+
+// Function to add an appliance
+void addAppliance() {
+    Appliance a;
+    std::cout << "Enter appliance name: ";
+    std::cin >> a.name;
+    std::cout << "Enter power (Watts): ";
+    std::cin >> a.power;
+    std::cout << "Enter daily usage hours: ";
+    std::cin >> a.hours;
+    appliances.push_back(a);
+}
+
+// Function to display all appliances and energy usage
+void displaySummary() {
+    std::cout << std::setw(15) << "Name" 
+              << std::setw(10) << "Power(W)" 
+              << std::setw(10) << "Hours" 
+              << std::setw(15) << "Energy(kWh)" << "\n";
+    std::cout << "---------------------------------------------\n";
+
+    for (auto &a : appliances) {
+        double energy = (a.power * a.hours) / 1000.0; // kWh
+        std::cout << std::setw(15) << a.name
+                  << std::setw(10) << a.power
+                  << std::setw(10) << a.hours
+                  << std::setw(15) << energy << "\n";
+    }
+}
+
+// Save appliances to file
+void saveToFile() {
+    std::ofstream file("appliances.txt");
+    for (auto &a : appliances) {
+        file << a.name << " " << a.power << " " << a.hours << "\n";
+    }
+    std::cout << "Data saved successfully.\n";
+}
+
+// Load appliances from file
+void loadFromFile() {
+    appliances.clear();
+    std::ifstream file("appliances.txt");
+    Appliance a;
+    while (file >> a.name >> a.power >> a.hours) {
+        appliances.push_back(a);
+    }
+    std::cout << "Data loaded successfully.\n";
+}
+
+// Display menu
+void showMenu() {
+    std::cout << "\n--- Appliance Energy Tracker ---\n";
+    std::cout << "1. Add Appliance\n";
+    std::cout << "2. Display Summary\n";
+    std::cout << "3. Save to File\n";
+    std::cout << "4. Load from File\n";
+    std::cout << "5. Exit\n";
+}
+
+// Get validated choice
+int getChoice() {
+    int choice;
+    std::cout << "Enter your choice: ";
+    while (!(std::cin >> choice) || choice < 1 || choice > 5) {
+        std::cin.clear();
+        std::cin.ignore(1000, '\n');
+        std::cout << "Invalid choice! Try again: ";
+    }
+    return choice;
+}
+
+int main() {
+    int choice;
+    do {
+        showMenu();
+        choice = getChoice();
+        switch (choice) {
+            case 1: addAppliance(); break;
+            case 2: displaySummary(); break;
+            case 3: saveToFile(); break;
+            case 4: loadFromFile(); break;
+            case 5: std::cout << "Exiting...\n"; break;
+        }
+    } while (choice != 5);
+
+    return 0;
+}
