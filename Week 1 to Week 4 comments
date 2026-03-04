@@ -1,0 +1,19 @@
+Week 1 – Basics and Setup
+// Initialized the project structure with clear folder separation for source code, headers, and resources.
+// Added meaningful variable names and consistent indentation to improve code readability.
+// Implemented basic input/output functions to test initial program flow.
+
+Week 2 – Arrays and Menu-Driven Program
+// Created arrays to store multiple appliance data, enabling scalability for larger datasets.
+// Built a menu-driven interface with options for input, calculation, and display for better user interaction.
+// Added input validation to ensure the user cannot enter negative or invalid appliance values.
+
+Week 3 – Input Validation and Billing Calculations
+// Implemented energy consumption calculations using loops and arrays to automate billing.
+// Added checks for zero-division or invalid readings to prevent runtime errors.
+// Displayed billing summary with formatted output for clarity and easy understanding by users.
+
+Week 4 – File Handling and Refactoring
+// Added file saving and loading functionality to persist appliance usage and billing data.
+// Refactored functions to reduce code duplication and improve maintainability.
+// Modularized code into separate functions for calculations, input, and display to enhance readability.
